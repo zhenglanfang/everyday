@@ -1,0 +1,63 @@
+{% extends "goods/base_detail_list.html" %}
+{% load static from staticfiles %}
+{% block title %}{{ good.good_title }}{% endblock %}
+{% block nextstyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/detail.js' %}"></script>
+{% endblock %}
+{% block top %}
+    <div class="goods_detail_con clearfix">
+        <div class="goods_detail_pic fl"><img src="{% static  good.img_url  %}"></div>
+
+        <div class="goods_detail_list fr">
+            <h3>{{ good.good_title }}</h3>
+            <p>{{ good.desc }}</p>
+            <div class="prize_bar">
+                <span class="show_pirze">¥<em>{{ good.price }}</em></span>
+                <span class="show_unit">单  位：{{ good.unit }}</span>
+                <span class="sell_count">交易成功：<b>{{ good.sell_count }}</b></span>
+            </div>
+            <div class="goods_num clearfix">
+                <div class="num_name fl">数 量：</div>
+                <div class="num_add fl clearfix">
+                    <input type="text" class="num_show fl" value="1">
+                    <a href="javascript:;" class="add fr" name="add">+</a>
+                    <a href="javascript:;" class="minus fr" name="minus">-</a>
+                </div>
+                <span>(库存 <em>{{ good.stock }}</em> 件)</span>
+            </div>
+            <div class="total">总价：
+                <em>16.80元</em>
+                <span>运费：
+                    <b>{{ good.freight }}</b>
+                </span>
+            </div>
+            <div class="operate_btn">
+                <a href="javascript:;" class="buy_btn">立即购买</a>
+                <a href="javascript:;" class="add_cart" id="add_cart" url="{% url 'cart:add' good.pk %}">加入购物车</a>
+            </div>
+        </div>
+    </div>
+    <div id="msg">已成功加入购物车！</div>
+{% endblock %}
+{% block right %}
+    <div class="r_wrap fr clearfix">
+        <ul class="detail_tab clearfix">
+            <li class="active">商品介绍</li>
+            <li>评论</li>
+        </ul>
+
+        <div class="tab_content">
+            <dl>
+                <dt>商品详情：</dt>
+                <dd>
+                    {% autoescape off  %}
+                    {{ good.detail }}
+                    {% endautoescape %}
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+{% endblock %}

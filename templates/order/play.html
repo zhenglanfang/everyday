@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付页面</title>
+    <style type="text/css">
+        body {
+            height: 600px;
+        {% comment %} background: -webkit-linear-gradient(180deg, #48AA35, white); /* Safari 5.1 - 6.0 */
+         background: -o-linear-gradient(180deg, #48AA35, white); /* Opera 11.1 - 12.0 */
+         background: -moz-linear-gradient(#48AA35, white); /* Firefox 3.6 - 15 */
+         background: linear-gradient(#48AA3580, white) no-repeat; /* 标准的语法（必须放在最后）*/{% endcomment %}
+            font-family: 微软雅黑;
+        }
+        p{
+            line-height: 40px;
+            height: 40px;
+            font-size: 18px;
+        }
+        span{
+            font-weight: bold;
+        }
+        div input{
+            background-color: #48aa35;
+            color: #fff;
+            text-align: center;
+            padding: 5px 10px;
+            border: 0px;
+            cursor: pointer;
+        }
+        .message{
+            position: fixed;
+            top: 190px;
+            right: 495px;
+            z-index: 10000;
+            width: 370px;
+            height: 250px;
+            border: 1px solid #f3f0f0;
+            border-top-color: rgb(191, 185, 185);
+            border-top: 5px solid #39a93e;
+            font-size: 20px;
+            text-align: center;
+            line-height: 193px;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#off').click(function () {
+                window.location.href = '{% url 'order:user_order' %}'; //重定向
+            });
+            $('#submit').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'order:play_handel' %}",
+                    data: "order={{ order.pk }}",
+                    success: function(msg){
+                        console.log(msg);
+                        if(msg == 'ok'){
+                            show_msg('支付成功！',function () {
+                                window.location.href = '{% url 'order:user_order' %}';
+                            })
+                        }
+                        else if(msg == 'false'){
+                             show_msg('支付失败，请请重新支付！',function () {
+                                $('.message').fadeOut("slow");
+                            });
+                        }
+                        else {
+                            show_msg('库存不足，请重新选购！',function () {
+{#                                var url = '';#}
+{#                                url = "{% url 'goods:detail' ";#}
+{#                                url += msg + " %}";#}
+{#                                console.log(url);#}
+                                window.location.href = '/goods/detail/'+ msg;
+                            });
+                        }
+                    },
+                    error: function () {
+
+                    }
+                });
+
+                function show_msg(msg,fn) {
+                    $('.message').text(msg);
+                    $('.message').fadeIn(2000,fn)
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div>
+    <h1>支付</h1>
+    <p><span>订单号：</span>{{ order.pk }}</p>
+    <p><span>支付金额：</span>{{ order.total }}元</p>
+    <input type="button" value="确认支付" id="submit">
+    &nbsp;&nbsp;&nbsp;
+    <input type="button" value="取消" id="off">
+    <div class="message">
+        支付成功！
+    </div>
+</div>
+</body>
+</html>

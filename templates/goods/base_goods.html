@@ -1,0 +1,41 @@
+{% extends "base_header.html" %}
+{%load static from staticfiles %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/public_goods_base.css' %}"/>
+    {% block otherstyle %}{% endblock %}
+{% endblock %}
+{% block search  %}
+    <div class="search center clearfix">
+        <div class="search_img fl">
+            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}"></a>
+        </div>
+        <div class="search_con fl">
+            <form method="get" action="{% url 'goods:list'  classify.pk|default:"0"  1 %}">
+                <input class="input_search fl" name="search" placeholder="搜索商品" type="text" value="{{ search }}">
+                <input class="input_btn" value="搜索" type="submit">
+            </form>
+        </div>
+        <div class="shopping_cart fr">
+            <a class="cart fl" href="{% url 'cart:carts' %}" id="end">我的购物车</a>
+            <div class="count fr">{{ cart_count }}</div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="width1200 center clearfix">
+        <div class="navbar_content clearfix">
+            <div class="subnav_con fl">
+                <p>全部商品分类</p>
+                {% block subnav %}{% endblock %}
+            </div>
+            <div class="nav_list">
+                <a href="{% url 'index' %}">首页</a>
+                <span>|</span>
+                <a href="#">手机生鲜</a>
+                <span>|</span>
+                <a href="#">抽奖</a>
+            </div>
+        </div>
+        {% block subcontent %}{% endblock %}
+    </div>
+{% endblock %}

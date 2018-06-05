@@ -1,0 +1,64 @@
+{% extends "goods/base_detail_list.html" %}
+{% load static from staticfiles %}
+{% block title %}{{classify.type_title}}{% endblock %}
+{% block nextstyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+    <script type="text/javascript" src="{% static 'js/list.js' %}"></script>
+{% endblock %}
+{% block right %}
+    <div class="goods_list_con fr">
+        <div class="sort_bar">
+            {% if not sell and not price %}
+                <a href="{% url 'goods:list' classify.pk page_now %}{% if search %}?search={{ search }}{% endif %}" class="active">默认</a>
+                <a href="{% url 'goods:list' classify.pk page_now %}?price=1{% if search %}&search={{ search }}{% endif %}">价格</a>
+                <a href="{% url 'goods:list' classify.pk page_now %}?sell=1{% if search %}&search={{ search }}{% endif %}">人气</a>
+            {% elif price %}
+                <a href="{% url 'goods:list' classify.pk page_now %}{% if search %}?search={{ search }}{% endif %}">默认</a>
+                <a href="{% url 'goods:list' classify.pk page_now %}?price=1{% if search %}&search={{ search }}{% endif %}" class="active">价格</a>
+                <a href="{% url 'goods:list' classify.pk page_now %}?sell=1{% if search %}&search={{ search }}{% endif %}">人气</a>
+            {% else%}
+                <a href="{% url 'goods:list' classify.pk page_now %}{% if search %}?search={{ search }}{% endif %}">默认</a>
+                <a href="{% url 'goods:list' classify.pk page_now %}?price=1{% if search %}&search={{ search }}{% endif %}">价格</a>
+                <a href="{% url 'goods:list' classify.pk page_now %}?sell=1{% if search %}&search={{ search }}{% endif %}" class="active">人气</a>
+            {% endif %}
+        </div>
+        <div class="clearfix">
+            <ul class="goods_list">
+                {% for obj in objs %}
+                    <li>
+                        <div>
+                            <a href="{% url 'goods:detail' obj.pk %}"><img src="{% static obj.img_url %}"></a>
+                            <h4><a href="{% url 'goods:detail' obj.pk %}">{{ obj.title10 }}</a></h4>
+                            <div>
+                                <span>￥</span><strong>{{ obj.price }}</strong><span class="unit">{{ obj.price }}/{{ obj.unit_switch }}</span>
+                                <a url="{% url 'cart:add' obj.pk %}" class="add_goods fr" title="加入购物车"></a>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="pagenation">
+            <span style="font-size: 11px;">{{count}} 条  共 {{num_pages}} 页</span>
+            {% if num_pages != 1 %}
+                {% if pages.has_previous %}
+                    <a href="{% url 'goods:list' classify.pk 1 %}?price={{ price }}&sell={{ sell }}{% if search %}&search={{ search }}{% endif %}" page="1">首页</a>
+                    <a href="{% url 'goods:list' classify.pk page_now|add:'-1' %}?price={{ price }}&sell={{ sell }}{% if search %}&search={{ search }}{% endif %}" page="{{page_now|add:'-1'}}">上一页</a>
+                {% endif %}
+                {% for num in page_range %}
+                    {% if num == page_now  %}
+                        <a href="" onclick="return false;" class="active">{{num}}</a>
+                        {% comment %}{% elif num == 6%}
+                        <a href="javascript:;">...</a>{% endcomment %}
+                    {% else %}
+                        <a href="{% url 'goods:list' classify.pk num %}?price={{ price }}&sell={{ sell }}{% if search %}&search={{ search }}{% endif %}">{{num}}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if pages.has_next %}
+                    <a href="{% url 'goods:list' classify.pk page_now|add:'1' %}?price={{ price }}&sell={{ sell }}{% if search %}&search={{ search }}{% endif %}" page="{{page_now|add:'1'}}">下一页</a>
+                    <a href="{% url 'goods:list' classify.pk num_pages %}?price={{ price }}&sell={{ sell }}{% if search %}&search={{ search }}{% endif %}" page="{{num_pages}}">尾页</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

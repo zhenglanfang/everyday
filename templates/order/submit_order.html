@@ -1,0 +1,84 @@
+{% extends "base_search.html" %}
+{% load static from staticfiles %}
+{% block title %}提交订单{% endblock %}
+{% block subtitle %}提交订单{% endblock %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/submit_order.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <div class="width1200 center">
+        <h3>确认收货地址</h3>
+        <form action="{% url 'order:add_order' %}" method="post">
+            {% csrf_token %}
+            <div class="common_list clearfix">
+                <ul class="address_ul">
+                    <li class="title">寄送到：</li>
+                    {% for add in adds %}
+                        <li>
+                            <input type="radio" name="address" value="{{ add.pk }}"/><label>{{ add.add }} （{{ add.recipients }} 收） {{ add.cel }}</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% if adds %}
+                    <a href="{% url 'user:user_address' %}?update_id={{ adds.first.pk }}&order=1" class="edit_site">编辑收货地址</a>
+                {% else %}
+                    <a href="{% url 'user:user_address' %}?order=1" class="edit_site">添加收货地址</a>
+                {% endif %}
+            </div>
+            <h3>支付方式</h3>
+            <div class="common_list clearfix">
+                <div class="pay_div clearfix">
+                    <input type="radio" name="pay_style" checked>
+                    <label class="cash">货到付款</label>
+                    <input type="radio" name="pay_style">
+                    <label class="weixin">微信支付</label>
+                    <input type="radio" name="pay_style">
+                    <label class="zhifubao"></label>
+                    <input type="radio" name="pay_style">
+                    <label class="bank">银行卡支付</label>
+                </div>
+            </div>
+            <h3>商品列表</h3>
+            <div class="common_list clearfix">
+                <ul class="goods_list_th clearfix">
+                    <li class="col01">商品名称</li>
+                    <li class="col02">商品单位</li>
+                    <li class="col03">商品价格</li>
+                    <li class="col04">数量</li>
+                    <li class="col05">小计</li>
+                </ul>
+                {% for cart in carts %}
+                    <ul class="goods_list_td clearfix">
+                        <li class="col01">{{ forloop.counter }}</li>
+                        <li class="col02"><img src="{% static cart.cart_good.img_url %}"></li>
+                        <li class="col03">{{ cart.cart_good.title10 }}</li>
+                        <li class="col04">{{ cart.cart_good.unit }}</li>
+                        <li class="col05">{{ cart.cart_good.price }}元</li>
+                        <li class="col06">{{ cart.nums }}</li>
+                        <li class="col07">{{ cart.money }}元</li>
+                    </ul>
+                {% endfor %}
+            </div>
+            <h3>总金额结算</h3>
+            <div class="common_list clearfix">
+                <div class="total_list">
+                    <p>共<span class="amount">{{ count }}</span>件商品，总金额：<span class="total_money">{{ sum_money }}元</span></p>
+                    <p>运费：<span class="freight">10元</span></p>
+                    <p>实付款：<span class="pay_money">{{ pay_money }}元</span></p>
+                </div>
+            </div>
+            <div class="clearfix">
+                <input type="text" hidden name="cart_ids" value="{{ cart_ids}}">
+                <input type="submit" class="submit_order fr" value="提交订单">
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        /*初始化：让第一个地址选中*/
+        $('.address_ul input').first().click();
+        $('.address_ul input').click(function () {
+            $('.common_list .edit_site').attr("href","{% url 'user:user_address' %}?order=1&update_id="+$(this).val())
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+*** Starting uWSGI 2.0.15 (64bit) on [Sun Oct 22 21:49:32 2017] ***
+compiled with version: 5.4.0 20160609 on 22 October 2017 17:05:52
+os: Linux-4.4.0-97-generic #120-Ubuntu SMP Tue Sep 19 17:28:18 UTC 2017
+nodename: zheng
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/zheng/pythonProjects/everyday
+writing pidfile to uwsgi.pid
+detected binary path: /home/zheng/.myvirtualenvs/django-python3/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/zheng/pythonProjects/everyday/
+your processes number limit is 7775
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (192.168.14.12:8081).
+bind(): Address already in use [core/socket.c line 769]

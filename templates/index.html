@@ -1,0 +1,245 @@
+{% extends "goods/base_goods.html" %}
+{% load static from staticfiles %}
+{% block title %}首页{% endblock %}
+{% block otherstyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/slide.js' %}"></script>
+{% endblock %}
+
+{% block subcontent %}
+    <div class="center_con clearfix">
+        <ul class="subnav fl">
+            <li><a href="{% url 'goods:list' 1 1%}" class="fruit">新鲜水果</a></li>
+            <li><a href="{% url 'goods:list' 2 1%}" class="seafood">海鲜水产</a></li>
+            <li><a href="{% url 'goods:list' 3 1%}" class="meet">猪牛羊肉</a></li>
+            <li><a href="{% url 'goods:list' 4 1%}" class="egg">禽类蛋品</a></li>
+            <li><a href="{% url 'goods:list' 5 1%}" class="vegetables">新鲜蔬菜</a></li>
+            <li><a href="{% url 'goods:list' 6 1%}" class="ice">速冻食品</a></li>
+        </ul>
+        <div class="slide fl">
+            <ul class="slide_pics">
+                <li><img src="{% static 'images/slide.jpg' %}" alt="幻灯片"></li>
+                <li><img src="{% static 'images/slide02.jpg' %}" alt="幻灯片"></li>
+                <li><img src="{% static 'images/slide03.jpg' %}" alt="幻灯片"></li>
+                <li><img src="{% static 'images/slide04.jpg' %}" alt="幻灯片"></li>
+            </ul>
+            <div class="prev"></div>
+            <div class="next"></div>
+            <ul class="points"></ul>
+        </div>
+        <div class="adv fl">
+            <a href="#"><img src="{% static 'images/adv01.jpg' %}"></a>
+            <a href="#"><img src="{% static 'images/adv02.jpg' %}"></a>
+        </div>
+    </div>
+    <div class="list_con clearfix">
+        <div class="list_title">
+            <h3>新鲜水果</h3>
+            <div class="sub_title fl">
+                <span></span>
+                {% for foo in type0_sell %}
+                    <a href="{% url 'goods:detail' foo.pk %}">{{ foo.good_title|slice:':5'}}</a></a>
+                {% endfor %}
+            </div>
+            <a href="{% url 'goods:list' 1 1 %}" class="fr">查看更多></a>
+        </div>
+        <div class="list_good">
+            <div class="goods_banner fl"><img src="{% static 'images/banner01.jpg' %}"></div>
+            <ul class="goods fl">
+                {% for foo in type0_new  %}
+                    <li>
+                        <h4><a href="{% url 'goods:detail' foo.pk %}">{{ foo.good_title}}</a></h4>
+                        <a href="{% url 'goods:detail' foo.pk %}"><img src="/static/media/{{ foo.imgs }}"></a>
+                        <p class="prize">¥ {{ foo.price }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="list_con clearfix">
+        <div class="list_title">
+            <h3>海鲜水产</h3>
+            <div class="sub_title fl">
+                <span></span>
+                <a href="#">河虾</a>
+                <a href="#">扇贝</a>
+                <a href="#">鱿鱼</a>
+            </div>
+            <a href="#" class="fr">查看更多></a>
+        </div>
+        <div class="list_good">
+            <div class="goods_banner fl"><img src="{% static 'images/banner02.jpg' %}"></div>
+            <ul class="goods fl">
+                <li>
+                    <h4><a href="#">青岛野生海捕大青虾</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods018.jpg' %}"></a>
+                    <p class="prize">¥ 48.00</p>
+                </li>
+                <li>
+                    <h4><a href="#">扇贝</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods019.jpg' %}"></a>
+                    <p class="prize">¥ 46.00</p>
+                </li>
+                <li>
+                    <h4><a href="#">冷冻秋刀鱼</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods020.jpg' %}"></a>
+                    <p class="prize">¥ 19.00</p>
+                </li>
+                <li>
+                    <h4><a href="#">基围虾</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods021.jpg' %}"></a>
+                    <p class="prize">¥ 25.00</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="list_con clearfix">
+        <div class="list_title">
+            <h3>猪牛羊肉</h3>
+            <div class="sub_title fl">
+                <span></span>
+                <a href="#">鲜芒</a>
+                <a href="#">加州提子</a>
+                <a href="#">亚马逊牛油果</a>
+            </div>
+            <a href="#" class="fr">查看更多></a>
+        </div>
+        <div class="list_good">
+            <div class="goods_banner fl"><img src="{% static 'images/banner03.jpg' %}"></div>
+            <ul class="goods fl">
+                <li>
+                    <h4><a href="goods/detail/1">草莓</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods003.jpg' %}"></a>
+                    <p class="prize">¥ 30.00</p>
+                </li>
+                <li>
+                    <h4><a href="#">葡萄</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods002.jpg' %}"></a>
+                    <p class="prize">¥ 5.50</p>
+                </li>
+                <li>
+                    <h4><a href="#">柠檬</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods001.jpg' %}"></a>
+                    <p class="prize">¥ 3.90</p>
+                </li>
+                <li>
+                    <h4><a href="#">奇异果</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods012.jpg' %}"></a>
+                    <p class="prize">¥ 25.80</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="list_con clearfix">
+        <div class="list_title">
+            <h3>禽类蛋品</h3>
+            <div class="sub_title fl">
+                <span></span>
+                <a href="#">鲜芒</a>
+                <a href="#">加州提子</a>
+                <a href="#">亚马逊牛油果</a>
+            </div>
+            <a href="#" class="fr">查看更多></a>
+        </div>
+        <div class="list_good">
+            <div class="goods_banner fl"><img src="{% static 'images/banner04.jpg' %}"></div>
+            <ul class="goods fl">
+                <li>
+                    <h4><a href="#">草莓</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods003.jpg' %}"></a>
+                    <p class="prize">¥ 30.00</p>
+                </li>
+                <li>
+                    <h4><a href="#">葡萄</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods002.jpg' %}"></a>
+                    <p class="prize">¥ 5.50</p>
+                </li>
+                <li>
+                    <h4><a href="#">柠檬</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods001.jpg' %}"></a>
+                    <p class="prize">¥ 3.90</p>
+                </li>
+                <li>
+                    <h4><a href="#">奇异果</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods012.jpg' %}"></a>
+                    <p class="prize">¥ 25.80</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="list_con clearfix">
+        <div class="list_title">
+            <h3>新鲜蔬菜</h3>
+            <div class="sub_title fl">
+                <span></span>
+                <a href="#">鲜芒</a>
+                <a href="#">加州提子</a>
+                <a href="#">亚马逊牛油果</a>
+            </div>
+            <a href="#" class="fr">查看更多></a>
+        </div>
+        <div class="list_good">
+            <div class="goods_banner fl"><img src="{% static 'images/banner05.jpg' %}"></div>
+            <ul class="goods fl">
+                <li>
+                    <h4><a href="#">草莓</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods003.jpg' %}"></a>
+                    <p class="prize">¥ 30.00</p>
+                </li>
+                <li>
+                    <h4><a href="#">葡萄</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods002.jpg' %}"></a>
+                    <p class="prize">¥ 5.50</p>
+                </li>
+                <li>
+                    <h4><a href="#">柠檬</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods001.jpg' %}"></a>
+                    <p class="prize">¥ 3.90</p>
+                </li>
+                <li>
+                    <h4><a href="#">奇异果</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods012.jpg' %}"></a>
+                    <p class="prize">¥ 25.80</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="list_con clearfix">
+        <div class="list_title">
+            <h3>速冻食品</h3>
+            <div class="sub_title fl">
+                <span></span>
+                <a href="#">鲜芒</a>
+                <a href="#">加州提子</a>
+                <a href="#">亚马逊牛油果</a>
+            </div>
+            <a href="#" class="fr">查看更多></a>
+        </div>
+        <div class="list_good">
+            <div class="goods_banner fl"><img src="{% static 'images/banner06.jpg' %}"></div>
+            <ul class="goods fl">
+                <li>
+                    <h4><a href="#">草莓</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods003.jpg' %}"></a>
+                    <p class="prize">¥ 30.00</p>
+                </li>
+                <li>
+                    <h4><a href="#">维多利亚葡萄维多利亚葡萄</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods002.jpg' %}"></a>
+                    <p class="prize">¥ 5.50</p>
+                </li>
+                <li>
+                    <h4><a href="#">柠檬</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods001.jpg' %}"></a>
+                    <p class="prize">¥ 3.90</p>
+                </li>
+                <li>
+                    <h4><a href="#">奇异果</a></h4>
+                    <a href="#"><img src="{% static 'images/goods/goods012.jpg' %}"></a>
+                    <p class="prize">¥ 25.80</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

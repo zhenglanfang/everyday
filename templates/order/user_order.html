@@ -1,0 +1,61 @@
+{% extends "user/base_user_center.html" %}
+{% load static from staticfiles %}
+{% block title %}个人订单{% endblock %}
+{% block order %}class="active"{% endblock %}
+{% block right%}
+    <h3>全部订单</h3>
+    {% if objs %}
+        {% for order in objs %}
+            <div class="order clearfix">
+                <ul class="order_info clearfix">
+                    <li class="col01">{{ order.date }}</li>
+                    <li class="col02">订单号：{{ order.pk }}</li>
+                    <li class="col03">{{ order.isplay_switch }}</li>
+                </ul>
+                {% for good in order.orderdetailinfo_set.all %}
+                    <ul class="order_good_info clearfix">
+                        <li class="col01"><a href="{% url 'goods:detail' good.good.pk %}"><img src="{% static good.good.img_url %}"></a></li>
+                        <li class="col02">{{ good.good.title5 }}</li>
+                        <li class="col03">{{ good.price }}元/{{ good.good.unit_switch }}</li>
+                        <li class="col04">{{ good.count }}</li>
+                        <li class="col05">{{ good.sub_money }}元</li>
+                    </ul>
+                {% endfor %}
+                <ul class="order_total clearfix">
+                    <li class="col01">总价：<span>¥{{ order.total }}</span></li>
+                    <li class="col02">
+                        {% if order.isPlay %}
+                            <li class="col02"><a href="#" class="oper_btn">查看物流</a></li>
+                        {% else %}
+                            <a href="{% url 'order:play' order.pk %}" class="oper_btn">去付款</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+        <div class="pagenation">
+            <span style="font-size: 11px;">{{count}} 条  共 {{num_pages}} 页</span>
+            {% if num_pages != 1 %}
+                {% if pages.has_previous %}
+                    <a href="{% url 'order:user_order' %}?page=1" page="1">首页</a>
+                    <a href="{% url 'order:user_order' %}?page={{ page_now|add:'-1' }}" page="{{page_now|add:'-1'}}">上一页</a>
+                {% endif %}
+                {% for num in page_range %}
+                    {% if num == page_now  %}
+                        <a href="" onclick="return false;" class="active">{{num}}</a>
+                        {% comment %}{% elif num == 6%}
+                        <a href="javascript:;">...</a>{% endcomment %}
+                    {% else %}
+                        <a href="{% url 'order:user_order' %}?page={{ num }}">{{num}}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if pages.has_next %}
+                    <a href="{% url 'order:user_order' %}?page={{page_now|add:'1'}}" page="{{page_now|add:'1'}}">下一页</a>
+                    <a href="{% url 'order:user_order' %}?page={{ num_pages }}" page="{{num_pages}}">尾页</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% else %}
+        <span>暂无订单</span>
+    {% endif %}
+{% endblock %}

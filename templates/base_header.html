@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block header %}
+    <div class="header_bar">
+        <div class="header center">
+            <div class="fl">欢迎来到天天生鲜!</div>
+            <div class="header_nav fr">
+                {% if request.session.username %}
+                    欢迎您：<b>{{ request.session.username }}</b>
+                    <span>|</span>
+                    <a href="{% url 'user:logout' %}"  id="logout">退出</a>
+                {% else %}
+                    <a href="{% url 'user:login' %}">登录</a>
+                    <span>|</span>
+                    <a href="{% url 'user:register' %}">注册</a>
+                {% endif %}
+                <span>|</span>
+                <a href="{% url 'user:user_info' %}">用户中心</a>
+                <span>|</span>
+                <a href="{% url 'cart:carts' %}">我的购物车</a>
+                <span>|</span>
+                <a href="{% url 'order:user_order' %}">我的订单</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

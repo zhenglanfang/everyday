@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{%load static from staticfiles%}
+{% block title %}注册{% endblock %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/register.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="reg_content center">
+        <div class="reg_left fl">
+            <img src="{% static 'images/logo02.png' %}"/>
+            <p>足不出户  ·  新鲜每一天</p>
+            <img src="{% static 'images/register_banner.png' %}"/>
+        </div>
+        <div class="reg_right fr">
+            <div class="form_title"><span>用户注册</span><a href="{% url 'user:login' %}">登录</a></div>
+            <div class="form">
+                <form action="{%url 'user:register'%}" method="post">
+                    {% csrf_token %}
+                    <label>用户名：</label>
+                    <input type="text" id="username" name="username" placeholder="手机号"/>
+                    <span class="error" id="check_name"></span>
+                    <label>密码：</label>
+                    <input type="password" id="userpwd" name="userpwd" placeholder="6到15位字母、数字、字符"/>
+                    <span class="error"></span>
+                    <label>确认密码：</label>
+                    <input type="password" id="ackpwd" name="ackpwd"/>
+                    <span class="error"></span>
+                    <label>邮箱：</label>
+                    <input type="text" id="email" name="email"/>
+                    <span class="error"></span>
+                    <div>
+                    <input type="checkbox" class="checkbox_input fl"  checked id="agree" name="agree"/>
+                    <label class="agree_label">同意 "天天生鲜用户使用协议"</label>
+                    <span class="error agree_error"></span>
+                    </div>
+                    <input type="submit" class="button" name="register" id="register" value="注册"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+/*商品列表*/
+.goods_list_con{
+    width: 980px;
+}
+.sort_bar{
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+    background-color: #f0fdec;
+}
+.sort_bar  a{
+    color: black;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    float: left;
+}
+.sort_bar .active{
+    background-color: #37ab40;
+    color: #fff;
+}
+
+/*购物车定位*/
+.shopping_cart{
+    margin-top: 45px;
+    position: fixed;
+    background-color: white;
+    right: 0px;
+}

@@ -1,0 +1,145 @@
+.total_count em{
+    color: red;
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
+.cart_list{
+    width: 1200px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.cart_list ul{
+    width: 1198px;
+    border: 1px solid #dedede;
+    overflow: hidden;
+    margin-top: -1px;
+    text-align: center;
+}
+.cart_list .col01{width:4%;}
+.cart_list .col02{width:12%;}
+.cart_list .col03{width:10%;}
+.cart_list .col04{width:16%;}
+.cart_list .col05{width:13%;}
+.cart_list .col06{width:12%;}
+.cart_list .col07{width:15%;}
+.cart_list .col08{width:18%;}
+.cart_list_th .col00{width: 26%; }
+.cart_list_th{background-color: #f7f7f7;}
+.cart_list_td{background-color: #edfff9;}
+.cart_list_th li{
+    height: 40px;
+    line-height: 40px;
+    float: left;
+}
+.cart_list_td li{
+    height: 120px;
+    line-height: 120px;
+    float: left;
+}
+.cart_list_td .col02 img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ddd;
+    display: block;
+    margin: 10px auto 0;
+}
+.cart_list_td .col03{
+    height: 48px;
+    line-height: 24px;
+    margin-top: 36px;
+    text-align: left;
+}
+.cart_list_td .col03 em{
+    color: #838383;;
+}
+.cart_list_td .num_ope{
+    width: 98px;
+    height: 28px;
+    border: 1px solid #dedede;
+    margin: 45px auto ;
+    line-height: 28px;
+}
+.cart_list_td .num_ope a{
+    width: 29px;
+    height: 28px;
+    background-color: #f3f3f3;
+}
+.cart_list_td .num_ope .num_show{
+    width: 38px;
+    height: 28px;
+    line-height: 28px;
+    border: 0px;
+    border-left: 1px solid #dedede;
+    border-right: 1px solid #dedede;
+    text-align: center;
+}
+
+.settlements{
+    height:78px;
+    background-color: #fff4e8;
+    line-height: 78px;
+    text-align: center;
+}
+/*.settlements .col01{width: 4%;}*/
+.settlements .col02{
+    /*width: 12%;*/
+    text-align: left;
+    margin-left: 2%
+}
+.settlements .col03{
+    width:66%;
+    height:60px;
+    line-height:28px;
+    text-align:right;
+    margin-top:10px;
+}
+.settlements .col03 span{
+    color:#ff0000;
+    padding-right:5px;
+}
+.settlements .col03 em{
+    color:#ff3d3d;
+    font-size:22px;
+    font-weight:bold;
+}
+.settlements .col03 span{color:#ff0000;font-size: 18px}
+.settlements .col03 b{
+    color:#ff0000;
+    font-size:14px;
+    padding:0 5px;
+}
+.settlements .col04{width:14%;}
+.settlements .col04 input{
+    display:block;
+    height:78px;
+    background-color:#ff3d3d;
+    color:#fff;
+    font-size:24px;
+    width: 100%;
+    border: 0px;
+    cursor: pointer;
+}
+
+/*空购物车*/
+.block_cart{
+    height: 460px;
+    background: url("/static/images/block_cart2.png") no-repeat;
+}
+.block_cart div{
+    margin-right: 350px;
+    margin-top: 145px;
+    height: 120px;
+}
+.block_cart h1{
+    color: #666;
+    margin-bottom: 32px;
+}
+.block_cart a{
+    background-color: #6FB6D4;
+    padding: 10px 25px;
+    border-radius: 4px;
+    margin-top: 20px;
+    font-size: 15px;
+    color: white;
+}

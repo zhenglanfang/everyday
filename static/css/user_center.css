@@ -1,0 +1,185 @@
+/*用户中心：left-menu*/
+.user_main{
+    width: 1200px;
+    background: url("../images/left_bg.jpg") repeat-y;
+}
+.left_menu{
+    width: 200px;
+    text-align: center;
+}
+.left_menu h3{
+    color: #8e8e8e;
+    height: 45px;
+    line-height: 45px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #dddddd;
+}
+.left_menu li{
+    height: 45px;
+    line-height: 45px;
+}
+.left_menu li .active{
+    color: #49AA36;
+    font-weight: bold;
+}
+.right_content{
+    margin-left: 20px;
+    width: 980px;
+}
+
+/*用户中心：right*/
+.right_content h3{
+    height: 45px;
+    line-height: 45px;
+    font-size: 15px;
+    /*font-weight: 500;*/
+}
+.right_content .user_info{
+    line-height: 35px;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    padding: 10px 0 10px 25px;
+}
+
+/*收货地址*/
+.user_info h4{
+    font-weight: 500;
+}
+.address a{
+    padding: 1px 5px;
+}
+.address .update{
+    margin-right: 20px;
+}
+.address_form{
+    font-size: 14px;
+    background-color: #f7f7f7;
+    /*margin: 10px auto;*/
+}
+.address_form form{
+    width: 402px;
+    padding: 5px 0px;
+}
+.address_form label{
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    text-align: right;
+}
+.address_form input{
+    width: 300px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    text-indent: 10px;
+    font-size: 15px;
+}
+.address_form textarea{
+    width: 280px;
+    height: 60px;
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 10px;
+    margin-top: 6px;
+    font-size: 15px;
+}
+.address_form span{
+    height: 15px;
+    line-height: 15px;
+    display: block;
+    color: red;
+    text-indent: 10px;
+    margin-top: 6px;
+    margin-left: 100px;
+}
+.address_form .info_submit{
+    width: 80px;
+    height: 30px;
+    background-color: #48aa35;
+    border: 0px;
+    color: #fff;
+    margin: 10px 0 10px 100px;
+    cursor: pointer;
+    text-indent: 0px;
+}
+
+
+/*订单*/
+.order{
+    font-size: 14px;
+    background-color: rgb(246, 246, 246);
+    margin-bottom: 20px;
+}
+.order ul li{
+    float: left;
+}
+.order_info{
+    border: 1px solid #ededed;
+    border-top: 2px solid #39a93e;
+    background-color: #f7f7f7;
+}
+.order_info li{
+    height: 30px;
+    width: 25%;
+    line-height: 30px;
+}
+.order_info .col01{
+    width: 20%;
+    margin-left: 20px;
+}
+.order_info .col03{
+    color: #ff8800;;
+}
+.order_good_info{
+    border-bottom: 1px solid #ededed;
+}
+.order_good_info li{
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+.order_good_info .col01 img{
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ddd;
+    margin: 10px auto;
+    display: block;
+}
+.order_good_info .col01{
+    width: 10%;
+    text-align: center;
+}
+.order_good_info .col02{
+    width: 12%;
+    text-align: left;
+}
+.order_good_info .col03{
+    font-size: 13px;
+    color: #5d5d5d;
+    width: 14%;
+}
+.order_good_info .col04{
+    width: 10%;
+}
+.order_total{
+    height: 50px;
+    line-height: 50px;
+}
+.order_total .col01{
+    margin-left: 20px;
+    margin-right: 35px;
+}
+.order_total span{
+    color: red;
+}
+.oper_btn{
+    background-color: #48aa35;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+}
+.oper_btn:hover{
+    color: #fff;
+}

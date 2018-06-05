@@ -1,0 +1,50 @@
+{% extends "goods/base_goods.html" %}
+{% load static from staticfiles %}
+{% block otherstyle %}
+    <script type="text/javascript" src="{% static 'js/jquery.fly.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/fly.js' %}"></script>
+    {% block nextstyle %}{% endblock %}
+{% endblock %}
+{% block subnav %}
+    <span></span>
+    <ul class="subnav">
+        <li><a href="{% url 'goods:list' 1 1%}" class="fruit">新鲜水果</a></li>
+        <li><a href="{% url 'goods:list' 2 1%}" class="seafood">海鲜水产</a></li>
+        <li><a href="{% url 'goods:list' 3 1%}" class="meet">猪牛羊肉</a></li>
+        <li><a href="{% url 'goods:list' 4 1%}" class="egg">禽类蛋品</a></li>
+        <li><a href="{% url 'goods:list' 5 1%}" class="vegetables">新鲜蔬菜</a></li>
+        <li><a href="{% url 'goods:list' 6 1%}" class="ice">速冻食品</a></li>
+    </ul>
+{% endblock %}
+{% block subcontent %}
+    <div class="breadcrumb">
+        <a href="{% url 'index' %}">全部分类</a>
+        {% if good %}
+            <span>＞</span>
+            <a href="{% url 'goods:list' good.good_type_id 1%}">{{ good.good_type.type_title }}</a>
+            <span>＞</span>
+            <a href="{{ request.get_full_path }}">{{ good.good_title|slice:'5' }}...</a>
+        {% elif classify %}
+            <span>＞</span>
+            <a href="{% url 'goods:list' classify.pk 1 %}">{{ classify.type_title }}</a>
+        {% endif %}
+        {% if search %}
+            <span>＞</span>
+            <a href="{% url 'goods:list' classify.pk 1 %}?search={{ search }}">{{ search }}</a>
+        {% endif %}
+    </div>
+    {% block top %}{% endblock %}
+    <div class="new_goods fl clearfix">
+        <h3>新品推荐</h3>
+        <ul class="center">
+            {% for new in new_good %}
+                <li>
+                    <a href="{% url 'goods:detail' new.pk%}"><img src="{% static new.img_url %}"></a>
+                    <h4><a href="{% url 'goods:detail' new.pk%}">{{ new.title10 }}</a></h4>
+                    <div class="prize">￥{{ new.price }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% block right %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base_header.html" %}
+{%load static from staticfiles %}
+{% block search %}
+    <div class="search center">
+        <div class="search_img fl">
+            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}"></a>
+            <span>|</span>{% block subtitle %}{% endblock %}
+        </div>
+        <div class="search_con fr">
+            <form method="get" action="{% url 'goods:list' 0 1 %}">
+                <input class="input_search fl" name="search" placeholder="搜索商品" type="text">
+                <input class="input_btn" value="搜索" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

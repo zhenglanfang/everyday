@@ -1,0 +1,152 @@
+h3{
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.common_list{
+    margin-top: 10px;
+    background-color: #f7f7f7;
+    border-top: 2px solid #00bc6f;
+    font-size: 14px;
+    position: relative;
+}
+.title{
+    font-weight: bold;
+}
+.address_ul{
+    margin: 10px 0 15px 20px;
+}
+.address_ul li{
+    height: 30px;
+    line-height: 30px;
+}
+.address_ul input{
+    /*vertical-align: bottom;*/
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.edit_site{
+    position: absolute;
+    right: 20px;
+    top: 35px;
+    width: 100px;
+    height: 30px;
+    background-color: #37ab40;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+}
+.edit_site:hover{
+    color: #fff;
+}
+
+.pay_div{
+    margin: 20px 20px;
+}
+.pay_div input{
+    float: left;
+    margin-right: 10px;
+    height: 40px;
+    vertical-align: middle;
+}
+.pay_div label{
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 10px 10px 10px 40px;
+    margin-right: 25px;
+    font-size: 12px;
+}
+.pay_div .cash{
+    background: url("../images/pay_icons.png") no-repeat 8px 0px ;
+}
+.pay_div .weixin{
+    background: url("../images/pay_icons.png") no-repeat 8px -35px;
+}
+.pay_div .zhifubao{
+    width: 42px;
+    height: 16px;
+    background: url("../images/pay_icons.png") no-repeat 8px -72px;
+}
+.pay_div .bank{
+    background: url("../images/pay_icons.png") no-repeat  4px -107px;
+}
+
+.goods_list_th {
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+.goods_list_th li{
+    float:left;
+    line-height:40px;
+    text-align:center;
+}
+.goods_list_th .col01{width:25%}
+.goods_list_th .col02{width:20%}
+.goods_list_th .col03{width:25%}
+.goods_list_th .col04{width:15%}
+.goods_list_th .col05{width:15%}
+
+.goods_list_td {
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    border-bottom: 1px solid #eeeded;
+}
+.goods_list_td li{
+    float: left;
+}
+.goods_list_td .col01{width:4%}
+.goods_list_td .col02{width:6%}
+.goods_list_td .col03{width:15%}
+.goods_list_td .col04{width:20%}
+.goods_list_td .col05{width:25%}
+.goods_list_td .col06{width:15%}
+.goods_list_td .col07{width:15%}
+.goods_list_td .col02 img{
+    width:63px;
+    height:63px;
+    border:1px solid #ddd;
+    display:block;
+    margin:7px 0;
+    float:right;
+}
+.goods_list_td .col03{
+    text-align:left;
+    text-indent:20px;
+}
+
+.total_list{
+    margin: 20px 15px;
+    text-align: right;
+    font-size: 12px;
+}
+.total_list p{
+    height: 25px;
+    line-height: 25px;
+}
+.total_list span{
+    color: red;
+    font-weight:bold;
+    margin: auto 5px;
+    font-size: 14px;
+}
+.submit_order{
+    width:160px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    background-color:#47aa34;
+    color:#fff;
+    font-size:16px;
+    display:block;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: 0px;
+    cursor: pointer;
+}
+.submit_order:hover{
+    color: #fff;
+}
